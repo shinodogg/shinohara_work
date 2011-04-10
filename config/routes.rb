@@ -1,15 +1,14 @@
 ShinoharaWork::Application.routes.draw do
-  get 'english/study'
-  get 'english/retry'
-  post 'english/answer'
-  get 'english/user_result'
-  get 'english/quiz_result'
-  get 'english/help'
-  resources :quiz
-
   root :to => 'welcome#index'
   devise_for :users
   get 'english/study', :to => 'english#study', :as => :user_root
+  get 'english/study'
+  get 'english/retry'
+  get 'english/user_result'
+  get 'english/quiz_result'
+  get 'english/help'
+  post 'english/answer'
+  resources :quiz
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

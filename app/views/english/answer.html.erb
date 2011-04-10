@@ -1,5 +1,4 @@
 <h1>Answer</h1>
-<p>Hello! <%= @login %></p>
 <h3>Result</h3>
 <p>Question word is <b><%= @quiz.question %></b></p>
 <p>Your answer is <b><%= @user_quiz.answer %></b></p>
@@ -7,8 +6,8 @@
 <p>Your answer is <b><%= @user_quiz.result %></b></p>
 <br>
 <p><b><%= link_to 'Next Question!', :controller => :english, :action => :study %></b></p>
-<p><b><%= link_to 'Your Result list', :controller => :english, :action => :user_result %></b></p>
-<p><b><%= link_to 'Quiz Result list', :controller => :english, :action => :quiz_result, :quiz_id => @quiz.id %></b></p>
+<p><b><%= link_to 'Your Result', :controller => :english, :action => :user_result %></b></p>
+<p><b><%= link_to 'Quiz Result', :controller => :english, :action => :quiz_result, :quiz_id => @quiz.id %></b></p>
 <br><br>
 <p>WordNet</p>
 <p>

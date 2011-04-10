@@ -9,6 +9,8 @@
 <body>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
+  <p>Hello! <%= @login %></p>
+  <p><%= link_to 'Question!', :controller => :english, :action => :study %> || <%= link_to 'Your Result', :controller => :english, :action => :user_result %> || <%= link_to 'Help', :controller => :english, :action => :help %> || <%= link_to 'Logout', :controller => :english, :action => :user_result %>
   <%= yield %>
 
 </body>
