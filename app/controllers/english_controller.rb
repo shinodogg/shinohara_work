@@ -27,11 +27,11 @@ class EnglishController < ApplicationController
   end
 
   def user_result
-    @user_quizzes = UserQuiz.where(:user_id = current_user[:id])
+    @user_quizzes = UserQuiz.paginate_by_user_id current_user[:id], :page => params[:page], :order => 'created_at DESC'
   end
 
   def quiz_result
-    @quiz_users = UserQuiz.where(:quiz_id = current_user[:id])
+    @quiz_users = UserQuiz.where(:quiz_id => current_user[:id])
   end
 
 

@@ -10,15 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110410023048) do
+ActiveRecord::Schema.define(:version => 20110410074928) do
 
   create_table "quizzes", :force => true do |t|
-    t.text   "question"
-    t.string "answer_a"
-    t.string "answer_b"
-    t.string "answer_c"
-    t.string "answer_d"
-    t.string "answer",   :limit => 1
+    t.text     "question"
+    t.string   "answer_a"
+    t.string   "answer_b"
+    t.string   "answer_c"
+    t.string   "answer_d"
+    t.string   "answer",     :limit => 1
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
@@ -39,10 +41,12 @@ ActiveRecord::Schema.define(:version => 20110410023048) do
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "users_quizzes", :force => true do |t|
-    t.integer "user_id"
-    t.integer "quiz_id"
-    t.boolean "result"
-    t.string  "answer",  :limit => 1
+    t.integer  "user_id"
+    t.integer  "quiz_id"
+    t.boolean  "result"
+    t.string   "answer",     :limit => 1
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
