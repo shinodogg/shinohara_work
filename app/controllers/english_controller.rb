@@ -11,9 +11,13 @@ class EnglishController < ApplicationController
     @quiz.answer = nil
   end
 
+  def retry
+    @quiz = Quiz.find(params[:quiz_id])
+    @quiz.answer = nil
+    render :action => "study"
+  end
+
   def answer
-    # TODO セッションのクイズIDとhiddenのクイズIDを比べる
-    # TODO answerに正しい値が入ってるかどうかバリデーションする
     @user_quiz = UserQuiz.new(params[:user_quiz])
     @user_quiz.user_id = current_user.id
     @quiz = Quiz.find(@user_quiz.quiz_id)
@@ -22,12 +26,13 @@ class EnglishController < ApplicationController
     else
       @user_quiz.result = false
     end
+    @user_quiz.word = @quiz.question
     @user_quiz.save
     @contentArray = getAnswerContentArray(@quiz.question)
   end
 
   def user_result
-    @user_quizzes = UserQuiz.paginate_by_user_id current_user[:id], :page => params[:page], :order => 'created_at DESC'
+    @user_quizzes = UserQuiz.paginate :conditions => ['user_id = ?', current_user.id], :page => params[:page], :order => 'created_at DESC'
   end
 
   def quiz_result

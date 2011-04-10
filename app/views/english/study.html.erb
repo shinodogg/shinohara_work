@@ -3,7 +3,7 @@
 <h2>What does this word mean?</h2>
 <p>Question</p>
 <h3><%= @quiz.question %></h3>
-<p>Qnswer</p>
+<p>Answer</p>
 <%= form_for :english, @user_quiz, :url=>{:action => "answer"} do |f| %>
   <% if @quiz.errors.any? %>
     <div id="error_explanation">

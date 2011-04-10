@@ -1,0 +1,22 @@
+<h1>Your Results</h1>
+<p>Hello! <%= @login %></p>
+<div align="center">
+<table border=1>
+  <tr>
+    <th>Word</th>
+    <th>Result</th>
+    <th>Date</th>
+    <th>Retry?</th>
+  </tr>
+  <% @user_quizzes.each do |uq| %>
+  <tr>
+    <td><%= uq.word %></td>
+    <td><%= uq.result %></td>
+    <td><%= uq.created_at %></td>
+    <td><%= link_to 'Go', :controller => :english, :action => :retry, :quiz_id => uq.quiz_id  %></td>
+  </tr>
+  <% end %>
+</table>
+</div>
+<%= will_paginate @user_quizzes %>
+<%= page_entries_info @user_quizzes %>

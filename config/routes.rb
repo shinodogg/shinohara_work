@@ -1,9 +1,11 @@
 ShinoharaWork::Application.routes.draw do
-  get "english/study"
-  post "english/answer"
-  get "english/user_result"
-  get "english/quiz_result"
-  get "english/help"
+  get 'english/study'
+  #match 'english/retry/:quiz_id' => 'english#retry'
+  get 'english/retry'
+  post 'english/answer'
+  get 'english/user_result'
+  get 'english/quiz_result'
+  get 'english/help'
   resources :quiz
 
   root :to => 'welcome#index'
