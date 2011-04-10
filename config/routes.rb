@@ -1,15 +1,15 @@
 ShinoharaWork::Application.routes.draw do
-  root :to => 'welcome#index'
-  devise_for :users
-  get 'english/study', :to => 'english#study', :as => :user_root
   get 'english/study'
   get 'english/retry'
   get 'english/user_result'
   get 'english/quiz_result'
   get 'english/help'
+  get 'english/wordnet'
   post 'english/answer'
   resources :quiz
-
+  root :to => 'welcome#index'
+  devise_for :users
+  get 'english/study', :to => 'english#study', :as => :user_root
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

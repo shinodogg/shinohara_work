@@ -6,26 +6,24 @@
 <%= form_for @user_quiz, :url=>{:action => "answer"} do |f| %>
   <% if @user_quiz.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user_quiz.errors.count, "error") %> prohibited this post from being saved:</h2>
-      <ul>
+      <h5><%= pluralize(@user_quiz.errors.count, "error") %> prohibited from being saved:</h5>
       <% @user_quiz.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <p><%= msg %></p>
       <% end %>
-      </ul>
     </div>
   <% end %>
 
   <div class="field">
-    a. <%= f.radio_button :answer, "a" %><%= @quiz.answer_a %>
+    <p>a. <%= f.radio_button :answer, "a" %><%= @quiz.answer_a %></p>
   </div>
   <div class="field">
-    b. <%= f.radio_button :answer, "b" %><%= @quiz.answer_b %>
+    <p>b. <%= f.radio_button :answer, "b" %><%= @quiz.answer_b %></p>
   </div>
   <div class="field">
-    c. <%= f.radio_button :answer, "c" %><%= @quiz.answer_c %>
+    <p>c. <%= f.radio_button :answer, "c" %><%= @quiz.answer_c %></p>
   </div>
   <div class="field">
-    d. <%= f.radio_button :answer, "d" %><%= @quiz.answer_d %>
+    <p>d. <%= f.radio_button :answer, "d" %><%= @quiz.answer_d %></p>
   </div>
   <%= f.hidden_field :quiz_id, :value=>@quiz.id %>
   <div class="actions">

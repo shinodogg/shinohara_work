@@ -1,6 +1,6 @@
 class EnglishController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :get_mail
+  before_filter :authenticate_user!, :except => [:help]
+  before_filter :get_mail, :except => [:help]
 
   def get_mail
     @login = current_user[:email]
@@ -53,6 +53,10 @@ class EnglishController < ApplicationController
   end
 
   def help
+  end
+
+  def wordnet
+    @wordnet = getAnswerContentArray(params[:question])
   end
 
   private

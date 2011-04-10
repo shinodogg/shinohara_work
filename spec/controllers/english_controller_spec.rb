@@ -1,7 +1,12 @@
 require 'spec_helper'
 
 describe EnglishController do
-
+  include Devise::TestHelpers
+  before (:each) do
+    @user = Factory.create(:user)
+    sign_in @user
+  end
+  
   describe "GET 'study'" do
     it "should be successful" do
       get 'study'
