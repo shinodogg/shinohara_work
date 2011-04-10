@@ -1,6 +1,18 @@
-<h1>English#answer</h1>
-<p>Find me in app/views/english/answer.html.erb</p>
-<% @answerContentArray.each { |element| %>
-  <p><%= element.strip %></p>
+<h1>Answer</h1>
+<p>Hello! <%= @login %></p>
+<h3>Result</h3>
+<p>Question word is <b><%= @quiz.question %></b></p>
+<p>Your answer is <b><%= @user_quiz.answer %></b></p>
+<p>Correct answer is <b><%= @quiz.answer %></b></p>
+<p>Your answer is <b><%= @user_quiz.result %></b></p>
+<br>
+<p><b><%= link_to 'Next Question!', :controller => :english, :action => :study %></b></p>
+<p><b><%= link_to 'Your Result list', :controller => :english, :action => :user_result %></b></p>
+<p><b><%= link_to 'Quiz Result list', :controller => :english, :action => :quiz_result %></b></p>
+<br><br>
+<p>WordNet</p>
+<p>
+<% @contentArray.each { |element| %>
+  <%= element.strip %><br>
 <% } %>
- 
+</p>

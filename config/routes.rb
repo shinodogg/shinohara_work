@@ -1,8 +1,8 @@
 ShinoharaWork::Application.routes.draw do
   get "english/study"
-
   post "english/answer"
-
+  get "english/user_result"
+  get "english/quiz_result"
   get "english/help"
   resources :quiz
 

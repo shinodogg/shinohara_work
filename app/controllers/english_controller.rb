@@ -1,7 +1,12 @@
 class EnglishController < ApplicationController
   before_filter :authenticate_user!
-  def study
+  before_filter :get_mail
+
+  def get_mail
     @login = current_user[:email]
+  end
+
+  def study
     @quiz = Quiz.order("RANDOM()").first
     @quiz.answer = nil
   end
@@ -18,8 +23,18 @@ class EnglishController < ApplicationController
       @user_quiz.result = false
     end
     @user_quiz.save
-    @answerContentArray = getAnswerContentArray(@quiz.question)
+    @contentArray = getAnswerContentArray(@quiz.question)
   end
+
+  def user_result
+    @user_quizzes = UserQuiz.where(:user_id = current_user[:id])
+  end
+
+  def quiz_result
+    @quiz_users = UserQuiz.where(:quiz_id = current_user[:id])
+  end
+
+
 
   def help
   end
@@ -35,10 +50,10 @@ class EnglishController < ApplicationController
       doc = REXML::Document.new response.body
       str = doc.elements['/WordDefinition/Definitions/Definition/WordDefinition'].get_text.to_s
       strArray = str.split("\n")
-      #returnStr = ""
-      #strArray.each { |element|
-      #  returnStr = returnStr + element.strip + "\r\n"
-     #}
+      returnStr = ""
+      strArray.each { |element|
+        returnStr = returnStr + element.strip + "\r\n"
+     }
     }
   end
 end

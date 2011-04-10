@@ -8,6 +8,7 @@ gem 'rails', '3.0.4'
 gem 'sqlite3'
 gem 'jquery-rails'
 gem 'devise'
+gem 'will_paginate'
 group :development, :test do
   gem 'rspec-rails'
 end
