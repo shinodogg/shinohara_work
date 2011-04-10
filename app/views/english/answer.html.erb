@@ -1,2 +1,6 @@
 <h1>English#answer</h1>
 <p>Find me in app/views/english/answer.html.erb</p>
+<% @answerContentArray.each { |element| %>
+  <p><%= element.strip %></p>
+<% } %>
+ 

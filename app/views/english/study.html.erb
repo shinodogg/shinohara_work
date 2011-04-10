@@ -1,2 +1,35 @@
-<h1>English#study</h1>
-<p>Find me in app/views/english/study.html.erb</p>
+<h1>Study</h1>
+<p>Hello! <%= @login %></p>
+<h2>What does this word mean?</h2>
+<p>Question</p>
+<h3><%= @quiz.question %></h3>
+<p>Qnswer</p>
+<%= form_for :english, @user_quiz, :url=>{:action => "answer"} do |f| %>
+  <% if @quiz.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_quiz.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <ul>
+      <% @user_quiz.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    a. <%= radio_button('user_quiz', 'answer', "a") %><%= @quiz.answer_a %>
+  </div>
+  <div class="field">
+    b. <%= radio_button('user_quiz', 'answer', "b") %><%= @quiz.answer_b %>
+  </div>
+  <div class="field">
+    c. <%= radio_button('user_quiz', 'answer', "c") %><%= @quiz.answer_c %>
+  </div>
+  <div class="field">
+    d. <%= radio_button('user_quiz', 'answer', "d") %><%= @quiz.answer_d %>
+  </div>
+  <%= hidden_field('user_quiz', 'quiz_id', :value=>@quiz.id ) %>
+  <div class="actions">
+    <%= f.submit value="Answer!"%>
+  </div>
+<% end %>

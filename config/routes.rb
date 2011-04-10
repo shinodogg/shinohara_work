@@ -1,9 +1,10 @@
 ShinoharaWork::Application.routes.draw do
   get "english/study"
 
-  get "english/answer"
+  post "english/answer"
 
   get "english/help"
+  resources :quiz
 
   root :to => 'welcome#index'
   devise_for :users
