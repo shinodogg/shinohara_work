@@ -1,6 +1,7 @@
-<h1>English#help</h1>
-<p>Find me in app/views/english/help.html.erb</p>
-<%= @true_count %>
-<%= @false_count %>
-<%= @total_count %>
+<h1>Quiz Result</h1>
+<h2>Question word is <%= @quiz.question %></h2>
+<p>True <%= @true_count %></p>
+<p>False <%= @false_count %></p>
+<p>Total <%= @total_count %></p>
+<br>
 <p><b><%= link_to 'Next Question!', :controller => :english, :action => :study %></b></p>

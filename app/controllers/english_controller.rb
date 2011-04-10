@@ -36,12 +36,17 @@ class EnglishController < ApplicationController
   end
 
   def quiz_result
+    @quiz = Quiz.find(params[:quiz_id])
+    @true_count = UserQuiz.quiz(params[:quiz_id]).true.size
+    @false_count = UserQuiz.quiz(params[:quiz_id]).false.size
+    @total_count = @true_count + @false_count
+  end
+
+  def total_result
     @true_count = UserQuiz.true.size
     @false_count = UserQuiz.false.size
     @total_count = @true_count + @false_count
   end
-
-
 
   def help
   end
