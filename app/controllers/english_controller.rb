@@ -9,11 +9,13 @@ class EnglishController < ApplicationController
   def study
     @quiz = Quiz.order("RANDOM()").first
     @quiz.answer = nil
+    @user_quiz = UserQuiz.new
   end
 
   def retry
     @quiz = Quiz.find(params[:quiz_id])
     @quiz.answer = nil
+    @user_quiz = UserQuiz.new
     render :action => "study"
   end
 
@@ -27,8 +29,10 @@ class EnglishController < ApplicationController
       @user_quiz.result = false
     end
     @user_quiz.word = @quiz.question
-    @user_quiz.save
-    @contentArray = getAnswerContentArray(@quiz.question)
+    unless @user_quiz.save
+      render :action => "study"
+    end
+    # @contentArray = getAnswerContentArray(@quiz.question)
   end
 
   def user_result
