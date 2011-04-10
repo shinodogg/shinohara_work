@@ -36,7 +36,9 @@ class EnglishController < ApplicationController
   end
 
   def quiz_result
-    @quiz_users = UserQuiz.where(:quiz_id => current_user[:id])
+    @true_count = UserQuiz.true.size
+    @false_count = UserQuiz.false.size
+    @total_count = @true_count + @false_count
   end
 
 

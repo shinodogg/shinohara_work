@@ -1,6 +1,5 @@
 ShinoharaWork::Application.routes.draw do
   get 'english/study'
-  #match 'english/retry/:quiz_id' => 'english#retry'
   get 'english/retry'
   post 'english/answer'
   get 'english/user_result'

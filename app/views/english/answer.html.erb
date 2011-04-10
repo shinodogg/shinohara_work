@@ -8,7 +8,7 @@
 <br>
 <p><b><%= link_to 'Next Question!', :controller => :english, :action => :study %></b></p>
 <p><b><%= link_to 'Your Result list', :controller => :english, :action => :user_result %></b></p>
-<p><b><%= link_to 'Quiz Result list', :controller => :english, :action => :quiz_result %></b></p>
+<p><b><%= link_to 'Quiz Result list', :controller => :english, :action => :quiz_result, :quiz_id => @quiz.id %></b></p>
 <br><br>
 <p>WordNet</p>
 <p>

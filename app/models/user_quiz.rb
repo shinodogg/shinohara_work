@@ -3,4 +3,7 @@ class UserQuiz < ActiveRecord::Base
   validates_presence_of :user_id, :quiz_id, :answer
   cattr_reader :per_page
   @@per_page =10 
+
+  scope :true, where('result =?', true)
+  scope :false, where('result =?', false)
 end
