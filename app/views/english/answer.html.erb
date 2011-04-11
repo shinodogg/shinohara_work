@@ -9,7 +9,5 @@
 <p><b><%= link_to 'Your Result', :controller => :english, :action => :user_result %></b></p>
 <p><b><%= link_to 'Quiz Result', :controller => :english, :action => :quiz_result, :quiz_id => @quiz.id %></b></p>
 <br><br>
-<div id="wordnet">
-<p>WordNet</p>
-<%= render(:partial => "english/wordnet.js", :object => @quiz) %> 
-</div>
+<%= link_to 'WordNet', {:controller => :english, :action => :wordnet, :question => @quiz.question}, :remote => true %>
+<div id="wordnet"></div>

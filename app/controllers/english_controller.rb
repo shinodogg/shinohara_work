@@ -57,6 +57,9 @@ class EnglishController < ApplicationController
 
   def wordnet
     @wordnet = getAnswerContentArray(params[:question])
+    respond_to do |format|
+        format.js
+    end
   end
 
   private
@@ -69,11 +72,7 @@ class EnglishController < ApplicationController
       response = http.get("/DictService/DictService.asmx/DefineInDict?dictId=wn&word=" + arg)
       doc = REXML::Document.new response.body
       str = doc.elements['/WordDefinition/Definitions/Definition/WordDefinition'].get_text.to_s
-      strArray = str.split("\n")
-      returnStr = ""
-      strArray.each { |element|
-        returnStr = returnStr + element.strip + "\r\n"
-     }
+      str.gsub!(/\n/, '<br>')
     }
   end
 end
