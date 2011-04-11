@@ -1,0 +1,6 @@
+one:
+  user_id: 1
+  quiz_id: 1
+  result: true
+  answer: c
+  word: dog

@@ -1,11 +1,22 @@
 require 'spec_helper'
 
 describe EnglishController do
-  include Devise::TestHelpers
-  before (:each) do
-    @user = Factory.create(:user)
-    sign_in @user
+fixtures :quizzes
+fixtures :users_quizzes
+include Devise::TestHelpers
+
+  def mock_user(stubs={})
+    @mock_user ||= mock_model(User, stubs).as_null_object
   end
+  before(:each) do
+    # mock up an authentication in the underlying warden library
+    request.env['warden'] = mock(Warden, :authenticate => mock_user,
+                                         :authenticate! => mock_user)
+  end
+  #before (:each) do
+  #  @user = Factory.create(:user)
+  #  sign_in @user
+  #end
   
   describe "GET 'study'" do
     it "should be successful" do
