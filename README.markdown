@@ -8,8 +8,7 @@
 * Studyページでランダムに表示される問題を解いていきます。RDBMSのRONDOM関数を使用しています。
 * Answerページに解答が表示されますが下部のWordNetリンク押下でAjaxでWordNetAPIにアクセスして結果を表示します。
 * Next Question!リンクで次の問題にうつります。
-* Your Resultリンクで自分の解答履歴が確認できます。
-* 履歴はwill_paginateを使用しています。
+* Your Resultリンクで自分の解答履歴が確認できます。 履歴はwill_paginateを使用しています。
 * Quiz Resultリンクでその問題の全体の正誤数が確認できます。
-* modelのscopeを使用して算出することでControllerをキレイに保っています。
-* validationとRSpecを使用したテストが不十分です。。DBのインデックス等も。。
+* Modelのscopeを使用して算出することでControllerをキレイに保っています。
+* ModelのvalidationおよびRSpecを使用したテストが不十分です。。DBのインデックス等も。。
